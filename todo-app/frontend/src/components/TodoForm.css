@@ -1,0 +1,104 @@
+/* TodoForm styles */
+.todo-form {
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.2s ease;
+}
+
+.form-group:focus-within {
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+}
+
+.title-input {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: none;
+  font-size: 1.1rem;
+  background: transparent;
+  outline: none;
+  color: #333;
+}
+
+.title-input::placeholder {
+  color: #999;
+}
+
+.description-input {
+  width: 100%;
+  padding: 0 1.5rem 1rem;
+  border: none;
+  font-size: 0.95rem;
+  background: transparent;
+  outline: none;
+  color: #666;
+  resize: none;
+  font-family: inherit;
+}
+
+.description-input::placeholder {
+  color: #999;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0 1.5rem 1rem;
+  justify-content: flex-end;
+}
+
+.cancel-btn,
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+.cancel-btn:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+.add-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.add-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive form */
+@media (max-width: 480px) {
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .cancel-btn,
+  .add-btn {
+    justify-content: center;
+  }
+}
