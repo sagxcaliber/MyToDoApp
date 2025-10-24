@@ -2,9 +2,9 @@ import uvicorn
 from fastapi import FastAPI, Depends, HTTPException
 from sqlmodel import Session
 from fastapi.middleware.cors import CORSMiddleware
-from .database import get_session, init_db
-from .models import Todo
-from .crud import get_todos, get_todo, create_todo, update_todo, delete_todo
+from database import get_session, init_db
+from models import Todo
+from crud import get_todos, get_todo, create_todo, update_todo, delete_todo
 
 app = FastAPI(title="Todo API")
 

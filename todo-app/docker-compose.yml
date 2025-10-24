@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: todo-backend
     environment:
-      - DATABASE_URL=sqlite:///data/app.db
+      - DATABASE_URL=sqlite:////data/app.db
       - DEBUG=False
     volumes:
       - sqlite-data:/data

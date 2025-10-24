@@ -1,5 +1,5 @@
 from sqlmodel import select
-from .models import Todo
+from models import Todo
 from sqlmodel import Session
 
 def get_todos(session: Session):
