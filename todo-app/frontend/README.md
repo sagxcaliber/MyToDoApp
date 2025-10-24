@@ -61,7 +61,7 @@ docker run -p 3000:80 todo-frontend
 
 ## Environment Variables
 
-- `VITE_API_URL` - Backend API URL (default: http://localhost:8000)
+- `VITE_API_URL` - Backend API URL (default: http://51.21.191.178:8000)
 
 ## API Integration
 

@@ -20,7 +20,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - VITE_API_URL=http://backend:8000
+        - VITE_API_URL=http://51.21.191.178:8000
     container_name: todo-frontend
     depends_on:
       - backend
