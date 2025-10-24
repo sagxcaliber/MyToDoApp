@@ -1,19 +1,24 @@
 version: "3.9"
+
 services:
   backend:
     build:
       context: ./backend
+      dockerfile: Dockerfile
     container_name: todo-backend
-    env_file:
-      - ./backend/.env
+    environment:
+      - DATABASE_URL=sqlite:///data/app.db
+      - DEBUG=False
     volumes:
       - sqlite-data:/data
     ports:
       - "8000:8000"
+    restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
       args:
         - VITE_API_URL=http://backend:8000
     container_name: todo-frontend
@@ -21,6 +26,8 @@ services:
       - backend
     ports:
       - "3000:80"
+    restart: unless-stopped
 
 volumes:
   sqlite-data:
+    driver: local
