@@ -1,33 +1,33 @@
 # Build stage
-FROM node:18-slim  as build
+FROM node:18-bullseye AS build
 
 WORKDIR /app
+
+# ✅ Ensure correct Rollup build on Linux
+ENV ROLLUP_SKIP_NODE_UPDATE=true
+ENV ROLLUP_SKIP_NATIVE_BUILD=true
 
 # Copy package files
 COPY package*.json ./
 
-# Clean install to avoid ARM64 issues
-RUN rm -rf node_modules package-lock.json && \
-    npm install --no-optional && \
-    npm cache clean --force
+# ✅ Clean, consistent install
+RUN npm ci --no-optional
 
-# Copy source code
+# Copy full source
 COPY . .
 
-# Build the app
+# ✅ Build frontend
 RUN npm run build
 
-# Production stage
+# Production stage with Nginx
 FROM nginx:alpine
 
-# Copy built app to nginx
+# Copy built app to Nginx
 COPY --from=build /app/dist /usr/share/nginx/html
 
-# Copy nginx configuration
+# Copy nginx configuration if you have it (otherwise remove this)
 COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose port 80
 EXPOSE 80
 
-# Start nginx
 CMD ["nginx", "-g", "daemon off;"]
